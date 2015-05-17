@@ -10,7 +10,8 @@ public class Triangulation extends JFrame {
 
 // private variables
   private JTextField tfWidth, tfLength, tfX1, tfX2, tfX3, tfY1, tfY2, tfY3, tfRead1, tfRead2, tfRead3;
-  private int wid, len, x1, x2, x3, y1, y2, y3, r1, r2, r3;
+  private JCheckBox lineOfSight;
+  private int wid, len;
 
   private int count = 0;
 
@@ -19,7 +20,7 @@ public Triangulation() {
   Container cp = getContentPane();
 
   // Content-pane sets layout
-  cp.setLayout(new GridLayout(12,1));
+  cp.setLayout(new GridLayout(13,1));
 
   cp.add(new JLabel("Room Width"));
   tfWidth = new JTextField(10);
@@ -76,6 +77,10 @@ public Triangulation() {
   tfRead3.setEditable(true);
   cp.add(tfRead3);
 
+  //cp.add(new JLabel("Line of Sight?"));
+  lineOfSight = new JCheckBox("Line of Sight?");
+  cp.add(lineOfSight);
+
   // Content-pane adds components
   JButton btnCalculate = new JButton("Calculate");
   cp.add(btnCalculate);
@@ -93,20 +98,13 @@ public Triangulation() {
                             Integer.parseInt(tfY3.getText()),
                             Integer.parseInt(tfRead1.getText()),
                             Integer.parseInt(tfRead2.getText()),
-                            Integer.parseInt(tfRead3.getText()));
+                            Integer.parseInt(tfRead3.getText()),
+                            lineOfSight.isSelected());
       wid = Integer.parseInt(tfWidth.getText());
       len = Integer.parseInt(tfLength.getText());
-      r.setSize(wid, len);
-      /* frame.add(new Result(Integer.parseInt(tfX1.getText()),
-          Integer.parseInt(tfX2.getText()),
-          Integer.parseInt(tfX3.getText()),
-          Integer.parseInt(tfY1.getText()),
-          Integer.parseInt(tfY2.getText()),
-          Integer.parseInt(tfY3.getText()),
-          Integer.parseInt(tfRead1.getText()),
-          Integer.parseInt(tfRead2.getText()),
-          Integer.parseInt(tfRead3.getText())));
-   //   JDialog j = new JDialog(frame); */
+      //r.setSize(wid, len);
+      r.setPreferredSize(new Dimension(wid, len));
+      r.pack();
       r.setVisible(true);
       r.setTitle("Results");
       r.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
