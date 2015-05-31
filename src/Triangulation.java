@@ -14,6 +14,7 @@ public class Triangulation extends JFrame {
   private int wid, len;
 
   private int count = 0;
+  private int pixelsToFeet = 20;
 
 /** Constructor to setup the GUI components */
 public Triangulation() {
@@ -103,7 +104,7 @@ public Triangulation() {
       wid = Integer.parseInt(tfWidth.getText());
       len = Integer.parseInt(tfLength.getText());
       //r.setSize(wid, len);
-      r.setPreferredSize(new Dimension(wid, len));
+      r.setPreferredSize(new Dimension(wid * pixelsToFeet, len * pixelsToFeet));
       r.pack();
       r.setVisible(true);
       r.setTitle("Results");
