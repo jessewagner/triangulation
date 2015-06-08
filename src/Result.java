@@ -43,11 +43,25 @@ public class Result extends JFrame {
   public void paint(Graphics g) {
     Graphics2D g2d = (Graphics2D) g;
 
+    Rectangle background = new Rectangle(0, 0, wid, len);
+    g2d.draw(background);
+    g2d.setColor(Color.WHITE);
+    g2d.fill(background);
+    g2d.setColor(Color.BLACK);
+
+    int label = 0;
     for (int i = 0; i < len; i += 100) {
       g2d.drawLine(0, i, wid, i);
+      g2d.drawString(Integer.toString(label) + "ft", 10 , i );
+      label = label + 5;
     }
+    label = 0;
+    g2d.drawString(Integer.toString(label) + "ft", 10 , 40 );
+    label = 5;
     for (int i = 0; i < wid; i += 100) {
       g2d.drawLine(i, 0, i, len);
+      g2d.drawString(Integer.toString(label) + "ft", i + 80 , 40 );
+      label = label + 5;
     }
 
 
